@@ -14,15 +14,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('welcome', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Route::get('login', function () {
-    return view('backend.users.login.login');
-});
+    if(!Auth()->user()) {
+        return view('backend.users.login.login');
+    }else{
+        return view('backend.dashboard.index');
+    }
+})->name('login');
 
-Route::resource('user', UserController::class);
+
+Route::middleware(['auth'])->group(function(){
+    Route::resource('user', UserController::class);
+
+    Route::get('logout', function (){
+        auth()->logout();
+        return redirect('login');
+    })->name('logout');
+
+    Route::get('/', function (){
+        return view('backend.dashboard.index');
+    })->name('dashboard');
+});
 
 
 

@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return view('backend.users.index');
     }
 
     /**
@@ -40,14 +40,16 @@ class UserController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Show the profile for a given user.
      *
-     * @param  \App\Models\Users  $users
-     * @return \Illuminate\Http\Response
+     * @param  int  $id
+     * @return \Illuminate\View\View
      */
-    public function show(Users $users)
+    public function show($id)
     {
-        //
+        return view('backend.users.account.show', [
+            'user' => Users::findOrFail($id)
+        ]);
     }
 
     /**

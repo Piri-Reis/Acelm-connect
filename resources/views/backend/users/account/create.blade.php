@@ -1,5 +1,4 @@
-@extends('backend.layouts.app-layout')
 
 @section('content')
-    @livewire('form-create-user')
+    @livewire('user-form-modal')
 @endsection
