@@ -46,4 +46,9 @@ class Users extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function getUserRole()
+    {
+        return $this->hasExactRoles(Role::all());
+    }
+
 }

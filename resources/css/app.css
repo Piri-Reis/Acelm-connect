@@ -51,7 +51,7 @@
 
 .btn-save {
     @apply
-    w-48
+    w-24
     py-3
     text-base text-white
     transition duration-500
