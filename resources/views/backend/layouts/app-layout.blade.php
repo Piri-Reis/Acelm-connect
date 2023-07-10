@@ -48,6 +48,6 @@
         </div>
     </main>
     @livewireScripts
-    @component('livewire-notification::components.toast')@endcomponent
+{{--    @component('livewire-notification::components.toast')@endcomponent--}}
 </body>
 </html>

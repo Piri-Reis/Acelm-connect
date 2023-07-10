@@ -1,7 +1,7 @@
 @extends('backend.layouts.app-layout')
 
-@section('title', 'Tableau de bord')
+@section('title', 'Paramétrages')
 
 @section('content')
-    @livewire('dashboard')
+    @livewire('settings')
 @endsection

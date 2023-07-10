@@ -24,10 +24,10 @@ class Login extends Component
         if (Auth::attempt($this->validate())) {
             return redirect('/');
         }else{
-            return $this->alert(
-                'error',
-                'identifiant ou mot de passe incorrect'
-            );
+//            return $this->alert(
+//                'error',
+//                'identifiant ou mot de passe incorrect'
+//            );
         }
     }
 

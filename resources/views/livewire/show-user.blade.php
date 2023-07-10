@@ -34,7 +34,7 @@
                 {{--Change password form--}}
                 <div class="bg-white p-3 shadow-sm rounded-sm">
                     <form wire:submit.prevent="update">
-                        <span class="font-semibold">Changer le mot de passe</span>
+                        <span class="font-semibold text-red-500">Changer le mot de passe</span>
                         <div class="relative pt-4">
                             <label for="lastname" class="label-class">Nouveau mot de passe</label>
                             <input wire:model="password"
