@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\UserController;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,8 +29,10 @@ Route::get('login', function () {
 })->name('login');
 
 
-//Route::middleware(['auth'])->group(function(){
+Route::middleware(['auth'])->group(function(){
     Route::resource('user', UserController::class);
+
+    Route::resource('user.show', UserController::class);
 
     Route::resource('settings', SettingsController::class);
 
@@ -41,7 +44,7 @@ Route::get('login', function () {
     Route::get('/', function (){
         return view('backend.dashboard.index');
     })->name('dashboard');
-//});
+});
 
 
 

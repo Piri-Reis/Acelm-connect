@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\Users;
+use http\Client\Curl\User;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 

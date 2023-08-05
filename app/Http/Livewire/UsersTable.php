@@ -2,45 +2,23 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Users;
-use Mediconesystems\LivewireDatatables\Column;
-use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
-use Mediconesystems\LivewireDatatables\NumberColumn;
+use Illuminate\Foundation\Auth\User;
 
-class UsersTable extends LivewireDatatable
+
+use Livewire\Component;
+use Livewire\WithPagination;
+
+
+class UsersTable extends Component
 {
-    public $model = Users::class;
+    use WithPagination;
 
-    public function columns()
+    public function render()
     {
-        return[
-            NumberColumn::name('id')
-                ->label('ID')
-                ->linkTo('user', 2),
-
-            Column::name('lastname')
-                ->label('Nom')
-                ->editable(),
-
-            Column::name('firstname')
-                ->label('Prénom')
-                ->editable(),
-
-            Column::name('email')
-                ->label('Email')
-                ->editable(),
-
-            Column::name('phone')
-                ->label('Télèphone')
-                ->editable(),
-
-            Column::callback(['id', 'lastname'], function ($id, $name) {
-                return view('livewire.datatables.table-actions', ['id' => $id, 'lastname' => $name]);
-            })->unsortable()
-
-        ];
-
-
+        return view('livewire.user-table', [
+            'users' => User::paginate(10)
+        ]);
     }
-
 }
+
+
