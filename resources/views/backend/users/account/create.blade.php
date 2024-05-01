@@ -1,4 +1,4 @@
 
 @section('content')
-    @livewire('user-form-modal')
+    @livewire('User.user-form-modal')
 @endsection

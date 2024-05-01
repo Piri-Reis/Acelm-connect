@@ -33,6 +33,7 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('user', UserController::class);
 
     Route::resource('user.show', UserController::class);
+    Route::get('user.edit/{user}', [UserController::class, 'edit'])->name('user.edit');
 
     Route::resource('settings', SettingsController::class);
 

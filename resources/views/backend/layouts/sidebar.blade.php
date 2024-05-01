@@ -1,6 +1,9 @@
 <!-- component -->
+@php
+echo request()->routeIs();
+@endphp
 <div class="md:flex flex-col md:flex-row md:min-h-screen w-full">
-    <div @click.away="open = false" class="flex flex-col w-full md:w-64 text-white bg-blue-600 dark-mode:text-gray-200 dark-mode:bg-gray-800 flex-shrink-0" x-data="{ open: false }">
+    <div @click.away="open = false" class="flex flex-col w-full md:w-64 text-white bg-blue-500 flex-shrink-0" x-data="{ open: false }">
         <div class="flex-shrink-0 px-8 py-8 flex flex-row items-center justify-between">
             <a href="{{ route('dashboard') }}" class="text-xl font-semibold tracking-widest text-white uppercase rounded-lg">ACELM</a>
 {{-------------toggle menu-------------}}
@@ -13,12 +16,12 @@
         </div>
 {{-------------side navigation-------------}}
         <nav :class="{'block': open, 'hidden': !open}" class="flex-grow md:block px-4 pb-4 md:pb-0 md:overflow-y-auto">
-            <a class="link-menu {{  request()->routeIs('user.index') ? 'text-gray-900 bg-gray-100' : '' }}"
+            <a class="link-menu {{  request()->routeIs('user.index') || request()->routeIs('user.show') || request()->routeIs('user.edit')  ? 'text-gray-900 bg-gray-100' : '' }}"
                href="{{ route('user.index') }}">
                 <i class="fa-solid fa-users mr-2"></i>
                 Utilisateurs
             </a>
-            <a class="link-menu {{  request()->routeIs('user.index') ? 'text-gray-900 bg-gray-100' : '' }}"
+            <a class="link-menu {{  request()->routeIs('settings.index') ? 'text-gray-900 bg-gray-100' : '' }}"
                href="{{ route('settings.index') }}">
                 <i class="fa-solid fa-gear"></i>
                 Paramétrages

@@ -52,15 +52,13 @@ class UserController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Users  $users
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Users $users)
+
+    public function edit($id)
     {
-        //
+        return view('backend.users.account.edit', [
+            'user' => Users::findOrFail($id)
+
+        ]);
     }
 
     /**

@@ -1,5 +1,5 @@
 @extends('backend.layouts.app-layout')
 @section('title', 'Utilisateur')
 @section('content')
-    @livewire('show-user', ['user' => $user])
+    @livewire('User.show-user', ['user' => $user])
 @endsection

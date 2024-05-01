@@ -3,5 +3,5 @@
 @section('title', 'Utilisateurs')
 
 @section('content')
-    @livewire('user-index')
+    @livewire('User.user-index')
 @endsection

@@ -39,24 +39,51 @@
     @apply text-xs text-red-500;
 }
 
+/*------------------ Buttons ------------------*/
 .btn {
-    @apply
-    block
-    w-28
-    py-2
-    bg-gradient-to-r from-green-400
-    to-blue-500 hover:from-pink-500 hover:to-yellow-500
-    rounded-2xl
-}
-
-.btn-save {
-    @apply
-    w-24
-    p-2
-    text-base text-white
-    transition duration-500
+    @apply text-base text-white text-sm
+    duration-500
     ease-in-out
     transform
+    rounded-md
+}
+
+.success {
+    @apply
+    bg-cyan-500 border-cyan-500
+    to-blue-500 hover:bg-cyan-800
+}
+
+.info {
+    @apply
     bg-blue-600 border-blue-600
-    rounded-md  focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 hover:bg-blue-800
+    hover:bg-blue-800
+}
+
+.warning {
+    @apply bg-yellow-500 border-yellow-500
+    hover:bg-yellow-800
+}
+
+.danger{
+    @apply mr-4 rounded-lg bg-red-500 py-2 px-4 font-sans text-xs font-bold uppercase text-white shadow-md shadow-red-500/20 transition-all hover:shadow-lg hover:shadow-red-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none
+}
+
+.btn-sm {
+    @apply w-14 p-2
+}
+
+.btn-l {
+    @apply w-24 p-2
+}
+
+.select {
+    @apply block
+    w-full
+    bg-gray-100
+    px-4 py-2 mt-2
+    text-gray-700 bg-white
+    border border-gray-300
+    rounded-md dark:bg-gray-800
+    focus:border-blue-500 focus:outline-none focus:ring
 }
