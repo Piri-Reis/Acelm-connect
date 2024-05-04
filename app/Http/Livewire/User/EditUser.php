@@ -41,17 +41,6 @@ class EditUser extends AlertModels
 
     protected $listeners = ['confirmed'];
 
-    #[On('confirmed')]
-    public function confirmed()
-    {
-        dd('helle');
-//        $this->user->delete();
-//        $this->reset();
-        $this->dispatch('successDeletedUser');
-//        return redirect('user');
-
-    }
-
     public function mount()
     {
         $this->allRules = Role::all();

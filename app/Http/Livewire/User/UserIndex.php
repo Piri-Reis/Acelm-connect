@@ -2,27 +2,14 @@
 
 namespace App\Http\Livewire\User;
 
+use App\http\Livewire\AlertModels;
+use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Attributes\On;
-use Livewire\Component;
 
-class UserIndex extends Component
+class UserIndex extends AlertModels
 {
+    use LivewireAlert;
 
-
-    #[On('successDeletedUser')]
-    public function successDeletedUser()
-    {
-        dd('helle');
-        $this->alert('info', 'Utilisateur suppression !', [
-            'position' => 'top',
-            'timer' => '3000',
-            'toast' => true,
-            'showConfirmButton' => true,
-            'onConfirmed' => '',
-            'showCancelButton' => true,1,
-            'onDismissed' => '',
-        ]);
-    }
 
     public function render()
     {

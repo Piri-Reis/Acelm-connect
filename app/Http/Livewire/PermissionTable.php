@@ -1,25 +1,23 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\http\Livewire;
 
 use App\Models\Permission;
-use App\Models\Users;
 use Livewire\Component;
-use Mediconesystems\LivewireDatatables\Column;
-use Mediconesystems\LivewireDatatables\Http\Livewire\LivewireDatatable;
-use Mediconesystems\LivewireDatatables\NumberColumn;
 
 class PermissionTable extends Component
 {
-    public $model = Permission::class;
+    public $permissions;
 
-    public function columns()
+    public function deletePermission($id){
+        Permission::destroy($id);
+        $this->dispatch('userDeleted','Permission supprimée');
+    }
+
+    public function render()
     {
-        return[
-            Column::name('name')
-                ->label('Nom')
-                ->editable(),
-        ];
-
+        return view('livewire.settings.permission-table', [
+            'apermissions' => Permission::all()
+        ]);
     }
 }

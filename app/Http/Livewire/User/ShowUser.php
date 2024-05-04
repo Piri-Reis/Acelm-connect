@@ -32,17 +32,6 @@ class ShowUser extends Component
     public $fieldDisabled = true;
     protected $listeners = ['confirmed'];
 
-  #[On('confirmed')]
-    public function confirmed()
-    {
-        dd('helle');
-//        $this->user->delete();
-//        $this->reset();
-        $this->dispatch('successDeletedUser');
-//        return redirect('user');
-
-    }
-
     public function mount()
     {
         $user = Users::findOrFail($this->user->id);
@@ -121,19 +110,6 @@ class ShowUser extends Component
             'title'=> "Your work has been saved",
             'showConfirmButton'=> false,
             'timer'=> 1500
-        ]);
-    }
-
-    public function delete()
-    {
-        $this->alert('warning', 'Confirmez la suppression !', [
-            'position' => 'center',
-            'timer' => '',
-            'toast' => false,
-            'showConfirmButton' => true,
-            'onConfirmed' => 'confirmed',
-            'showCancelButton' => true,1,
-            'onDismissed' => '',
         ]);
     }
 

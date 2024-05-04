@@ -4,20 +4,14 @@ namespace App\Http\Livewire;
 
 use App\Models\Permission;
 use App\Models\Role;
+use Livewire\Attributes\Rule;
 use Livewire\Component;
 
-class Settings extends Component
+class Settings extends AlertModels
 {
-    public $allRules;
-    public $allPermissions ;
     public $newRuleName;
     public $newPermissionName;
     public $permissionName;
-
-    public function mount(){
-        $this->allRules = Role::all();
-        $this->allPermissions = Permission::all();
-    }
 
 
     protected $messages = [
@@ -33,7 +27,6 @@ class Settings extends Component
             'guard_name' => 'web',
         ]);
 
-        $this->allRules = Role::all();
         $this->alert(
             'success',
             'Enregistrement du rôle effectué'
@@ -41,7 +34,9 @@ class Settings extends Component
         $this->reset('newRuleName');
     }
 
-    public function createPermission(){
+
+    public function createPermission(): void
+    {
 
         $permissionDatas = $this->validate(['newPermissionName' => 'required|min:2']);
 
@@ -64,10 +59,7 @@ class Settings extends Component
 
     public function render()
     {
-        return view('livewire.settings.settings', [
-            'allRules' => Role::all(),
-            'allPermission' => Permission::all()
-        ]);
+        return view('livewire.settings.settings');
     }
 }
 

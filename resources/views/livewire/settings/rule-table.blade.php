@@ -1,5 +1,4 @@
 <div>
-    <!-- component -->
     <section class="container px-4 mx-auto">
         <div class="flex flex-col">
             <div class="-mx-4 -my-2 mt-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -23,24 +22,28 @@
                                 </th>
                             </tr>
                             </thead>
-                            @foreach($users as $user)
-                            <tbody class="bg-white divide-y divide-gray-200">
+                            @foreach($roles as $rule)
+                                <tbody class="bg-white divide-y divide-gray-200">
                                 <tr>
-                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">{{ $user->lastname }}</td>
-                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">{{ $user->firstname }}</td>
-                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">{{ $user->email }}</td>
-                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap"><a href="{{ route('user.show', $user->id) }}">voir</a></td>
-                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap"><button class="btn danger" wire:click="delete({{ $user->id }})"><i class="fa-solid fa-trash"></i></button></td>
+                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">{{ $rule->name }}</td>
+                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+                                        <select class="select">
+                                            @foreach($permissions as $permission)
+                                                <option value="{{$permission->name}}">{{$permission->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </td>
+                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap"><button class="btn info">Enregistrer</td>
+                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap"><button wire:click="deleteRule({{$rule->id}})" class="btn danger"><i class="fa-solid fa-trash"></i></button></td>
+                                    <td class="px-4 py-4 text-sm text-gray-500 whitespace-nowrap"></td>
                                 </tr>
-                            </tbody>
+                                </tbody>
                             @endforeach
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-        {{ $users->links('vendor.livewire.tailwind') }}
+{{--                {{ $allRules->links('vendor.livewire.tailwind') }}--}}
     </section>
 </div>
-<!-- component -->
-<!-- component -->

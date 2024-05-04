@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Livewire\User;
-
+use Livewire\Component;
 use App\http\Livewire\AlertModels;
 use Illuminate\Foundation\Auth\User;
 use Livewire\Attributes\On;
@@ -19,9 +19,7 @@ class UsersTable extends AlertModels
     public function confirmed()
     {
         User::destroy($this->user);
-        $this->SuccesAlert('Utilisateur suprimmé avec succès !');
-        return redirect('user');
-
+        $this->dispatch('userDeleted','Utilisateur supprimé');
     }
     public function render()
     {
