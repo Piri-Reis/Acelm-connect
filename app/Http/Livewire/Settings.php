@@ -16,11 +16,13 @@ class Settings extends AlertModels
 
     protected $messages = [
         'newRuleName.required' => '* vous devez indiquer un nom de rôle',
-        'newPermissionName.required' => '* vous devez indiquer un nom de permission'
+        'newPermissionName.required' => '* vous devez indiquer un nom de permission',
+        'unique' => 'Le rôle existe déja !'
     ];
 
-    public function createRule(){
-        $ruleDatas = $this->validate(['newRuleName' => 'required|min:2']);
+    public function createRule()
+    {
+        $ruleDatas = $this->validate(['newRuleName' => 'required|min:2|unique:App\Models\Role,name']);
 
         Role::create([
             'name' => $ruleDatas['newRuleName'],
@@ -31,14 +33,15 @@ class Settings extends AlertModels
             'success',
             'Enregistrement du rôle effectué'
         );
-        $this->reset('newRuleName');
-    }
+        return redirect()->route('settings.index');
+
+        }
 
 
-    public function createPermission(): void
+    public function createPermission()
     {
 
-        $permissionDatas = $this->validate(['newPermissionName' => 'required|min:2']);
+        $permissionDatas = $this->validate(['newPermissionName' => 'required|min:2|required|min:2|unique:App\Models\Permission,name']);
 
         Permission::create([
             'name' => $permissionDatas['newPermissionName'],
@@ -53,7 +56,7 @@ class Settings extends AlertModels
             'Enregistrement de la permission effectué !'
         );
 
-        $this->reset('newPermissionName');
+        return redirect()->route('settings.index');
 
     }
 

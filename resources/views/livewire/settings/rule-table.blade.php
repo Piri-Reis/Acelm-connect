@@ -39,11 +39,11 @@
                                 </tr>
                                 </tbody>
                             @endforeach
+                            {{ $roles->links('vendor.livewire.tailwind') }}
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-{{--                {{ $allRules->links('vendor.livewire.tailwind') }}--}}
     </section>
 </div>

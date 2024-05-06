@@ -21,7 +21,7 @@ class RuleTable extends AlertModels
     public function render()
     {
         return view('livewire.settings.rule-table', [
-            'roles' => Role::all(),
+            'roles' => Role::paginate(5),
             'permissions' => Permission::all(),
         ]);
     }

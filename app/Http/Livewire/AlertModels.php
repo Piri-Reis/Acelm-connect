@@ -12,7 +12,7 @@ class AlertModels extends Component
     public function SuccesAlert($message){
         $this->alert('success', $message, [
         'position' => 'top-end',
-        'timer' => 3000,
+        'timer' => 1000,
         'toast' => false,
         'showConfirmButton' => false,
     ]);
